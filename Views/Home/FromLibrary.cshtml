@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "SVG library";
+}
+<h1>Using SVG library</h1>
+
+@Html.Raw(ViewBag.SvgString)
+
+<script>
+    // Remove the red circle after 3 seconds
+    setTimeout(function () {
+        var redCircle = document.getElementById("line");
+        redCircle.remove();
+    }, 3000);
+</script>

@@ -19,7 +19,7 @@ namespace pruebaSVG.Controllers
             _logger = logger;
             _caja = new Caja() { color = 1, height = 50, width = 50, x = 100, y = 100 };
             _circulo = new Circulo() { radius = 30, centerX = 50, centerY = 50, color = 0 };
-            _linea = new Linea() { StartX = 125, StartY = 125, color = 1, id = "line", EndX = 50, EndY = 50 };
+            _linea = new Linea() { StartX = 125, StartY = 125, color = 0, id = "line", EndX = 50, EndY = 50 };
         }
 
         public IActionResult Index()
@@ -27,7 +27,7 @@ namespace pruebaSVG.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult FromLibrary()
         {
             SvgDocument svgDoc = new SvgDocument();
             svgDoc.Width = 500; svgDoc.Height = 500;
@@ -40,7 +40,6 @@ namespace pruebaSVG.Controllers
                 CenterX = _circulo.centerX,
                 CenterY = _circulo.centerY,
                 Fill = new SvgColourServer(_circulo.color == 0?Color.Black:Color.Red),
-                Stroke = new SvgColourServer(Color.Black),
                 StrokeWidth = 2
             });
 
@@ -50,8 +49,7 @@ namespace pruebaSVG.Controllers
                 Width = _caja.width,
                 Y = _caja.y,
                 X = _caja.x,
-                Fill = new SvgColourServer(_circulo.color == 0 ? Color.Black : Color.Red),
-                Stroke = new SvgColourServer(Color.Black),
+                Fill = new SvgColourServer(_caja.color == 0 ? Color.Black : Color.Red),
                 StrokeWidth = 2
             });
 
@@ -61,8 +59,8 @@ namespace pruebaSVG.Controllers
                 StartY = _linea.StartY,
                 EndX = _linea.EndX,
                 EndY = _linea.EndY,
-                Fill = new SvgColourServer(_circulo.color == 0 ? Color.Black : Color.Red),
-                Stroke = new SvgColourServer(Color.Black),
+                Fill = new SvgColourServer(_linea.color == 0 ? Color.Black : Color.Red),
+                Stroke = new SvgColourServer(_linea.color == 0 ? Color.Black : Color.Red),
                 StrokeWidth = 2,
                 ID = "line"
             });
