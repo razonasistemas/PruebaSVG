@@ -4,11 +4,22 @@
 <h1>Using SVG library</h1>
 
 @Html.Raw(ViewBag.SvgString)
+@Html.Raw(ViewBag.SvgString2)
+<br />
+@Html.Raw(ViewBag.SvgString3)
+<script>
+    // Elimina la linea negra tras 3 segundos
+    setTimeout(function () {
+        var lineaNegra = document.getElementById("line");
+        lineaNegra.remove();
+    }, 3000);
+</script>
 
 <script>
-    // Remove the red circle after 3 seconds
-    setTimeout(function () {
-        var redCircle = document.getElementById("line");
-        redCircle.remove();
-    }, 3000);
+    // Este codigo busca el elemento con id "clickableRect" y le añade dinamicamente un codigo al evento "onclick"
+    element = document.getElementById("clickableRect");
+   
+    element.onclick = function () {
+        alert("Conectando al puerto XXX y ejecutando YYY");
+    }
 </script>
