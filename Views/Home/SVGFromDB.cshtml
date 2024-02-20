@@ -1,0 +1,26 @@
+﻿@model pruebaSVG.Models.VMSVGFromDB
+
+@{
+    ViewData["Title"] = "SVGFromDB";
+}
+
+<h1>SVGFromDB</h1>
+
+<svg width="200" height="200">
+
+    <!-- Black Circle -->
+    <circle cx="@Model.circulo.centerX" cy="@Model.circulo.centerY" r="@Model.circulo.radius" fill="black" id="blackCircle" />
+
+    <!-- Red Square -->
+    <rect x="@Model.caja.x" y="@Model.caja.y" width="@Model.caja.width" height="@Model.caja.height" fill="red" id="redSquare" />
+    <line x1="@Model.linea.StartX" y1="@Model.linea.StartY" x2="@Model.linea.EndX" y2="@Model.linea.EndY" stroke="black" stroke-width="2" id="line" />
+</svg>
+
+
+<script>
+    // Remove the red circle after 3 seconds
+    setTimeout(function () {
+        var redCircle = document.getElementById("line");
+        redCircle.remove();
+    }, 3000);
+</script>

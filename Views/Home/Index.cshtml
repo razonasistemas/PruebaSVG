@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Pure SVG";
+}
+
+<div class="text-center">
+    <h1 class="display-4">SVG puro</h1>
+</div>
+
+<svg width="200" height="200">
+   
+    <!-- Black Circle -->
+    <circle cx="50" cy="50" r="30" fill="black" id="blackCircle" />
+
+    <!-- Red Square -->
+    <rect x="100" y="100" width="50" height="50" fill="red" id="redSquare"/>
+    <line x1="50" y1="50" x2="125" y2="125" stroke="black" stroke-width="2" id="line" />
+</svg>
+
+
+<script>
+    // Remove the red circle after 3 seconds
+    setTimeout(function () {
+        var redCircle = document.getElementById("line");
+        redCircle.remove();
+    }, 3000);
+</script>
+
