@@ -99,6 +99,7 @@ namespace pruebaSVG.Controllers
             svgText1.Stroke = new SvgColourServer(Color.Black);
             svgText1.Color = new SvgColourServer(Color.Black);
             svgText1.Fill = new SvgColourServer(Color.Black);
+            svgText1.ID = "texto";
 
             group2.Children.Add(svgText1);
 

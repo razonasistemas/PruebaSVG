@@ -10,10 +10,12 @@
 
 @Html.Raw(ViewBag.SvgString4)
 <script>
-    // Elimina la linea negra tras 3 segundos
+    // Elimina la linea negra tras 3 segundos. Cambia el texto tambien
     setTimeout(function () {
         var lineaNegra = document.getElementById("line");
         lineaNegra.remove();
+        var texto = document.getElementById("texto");
+        texto.textContent = "click ya!";
     }, 3000);
 </script>
 
