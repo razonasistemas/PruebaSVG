@@ -72,7 +72,7 @@ namespace pruebaSVG.Controllers
             ViewBag.svgString = svgDoc.GetXML();
 
 
-            ///////////////////////////// Texto dentro de un rectangulo y al lado una imagen cargada ///
+            ///////////////////////////// Texto dentro de un rectangulo ///
             SvgDocument svgDoc2 = new SvgDocument();
             svgDoc2.Width = 200;
             svgDoc2.Height = 200;
@@ -84,7 +84,10 @@ namespace pruebaSVG.Controllers
             svgRect.Height = 40;
             svgRect.Fill = new SvgColourServer(Color.Red);
             // el codigo en click no parece generar nada en frontend. Solo añade esto al elemento:  onclick="clickableRect/onclick"
-            svgRect.Click += (s, e) => { Debug.WriteLine("Hola"); };
+            svgRect.Click += (s, e) =>
+            {
+                Debug.WriteLine("Hola");
+            };
             svgRect.ID = "clickableRect";
 
             group2.Children.Add(svgRect);
@@ -99,21 +102,30 @@ namespace pruebaSVG.Controllers
 
             group2.Children.Add(svgText1);
 
-            // Añadir una imagen bmp externa
-            // La imagen no se carga bien. Puede ser porque es necesario poner algun tipo de configuracion extra            
-            SvgImage svgImage1 = new SvgImage();
-            svgImage1.Y = 100;
-            svgImage1.Width = 50;
-            svgImage1.Height = 50;
-            svgImage1.Href = _hostingEnvironment.WebRootPath + "\\blackbuck.bmp";
-            group2.Children.Add(svgImage1);
-
             ViewBag.svgString2 = svgDoc2.GetXML();
 
             ////////////// Leer SVG desde un fichero ///////////////
             var svgDoc3 = SvgDocument.Open(_hostingEnvironment.WebRootPath + "\\prueba.svg");
             ViewBag.svgString3 = svgDoc3.GetXML();
 
+            ///////////// Cargar imagen externa ////////////
+            ///
+            // Añadir una imagen bmp externa
+            // La imagen no se carga bien. Puede ser porque es necesario poner algun tipo de configuracion extra            
+
+            SvgDocument svgDoc4 = new SvgDocument();
+            svgDoc2.Width = 200;
+            svgDoc2.Height = 200;
+
+            SvgImage svgImage1 = new SvgImage();
+            svgImage1.Y = 100;
+            svgImage1.X = 100;
+            svgImage1.Width = 50;
+            svgImage1.Height = 50;
+            svgImage1.Href = "https://people.math.sc.edu/Burkardt/data/bmp/blackbuck.bmp"; 
+
+            svgDoc4.Children.Add(svgImage1);
+            ViewBag.svgString4 = svgDoc4.GetXML();
             return View();
         }
 
